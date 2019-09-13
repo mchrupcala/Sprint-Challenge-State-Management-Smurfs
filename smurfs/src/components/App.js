@@ -1,7 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
-class App extends Component {
-  render() {
+import {connect} from 'react-redux';
+import {getSmurfs} from '../actions';
+
+const App = ({getSmurfs}) => {
+  useEffect(() => {
+    getSmurfs();
+  }, [getSmurfs]);
+
+  if (isFetching) {
+    return <h2>Our colony of worker ants is getting that data for you!</h2>
+  }
+
+
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
@@ -10,7 +21,12 @@ class App extends Component {
         <div>Have fun!</div>
       </div>
     );
+}
+
+const mapStateToProps = state => {
+  return {
+
   }
 }
 
-export default App;
+export default connect(mapStateToProps, {})(App);
