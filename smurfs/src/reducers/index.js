@@ -1,4 +1,4 @@
-import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, POST_SMURFS_START, POST_SMURFS_SUCCESS, POST_SMURFS_FAILURE } from '../actions';
+import { FETCH_SMURFS_START, FETCH_SMURFS_SUCCESS, FETCH_SMURFS_FAILURE, POST_SMURFS_START, POST_SMURFS_SUCCESS, POST_SMURFS_FAILURE, DELETE_SMURFS_START, DELETE_SMURFS_SUCCESS, DELETE_SMURFS_FAILURE } from '../actions';
 
 export const initialState = {
     smurfs: [],
@@ -20,7 +20,7 @@ export const reducer = (state = initialState, action) => {
         };
 
     case FETCH_SMURFS_SUCCESS:
-        console.log("Got that data tho.", action.payload);
+        // console.log("Got that data tho.", action.payload);
         return {
             ...state,
             smurfs: action.payload,
@@ -30,7 +30,7 @@ export const reducer = (state = initialState, action) => {
         };
 
     case FETCH_SMURFS_FAILURE:
-        console.log("Did NOT get that data tho.");
+        // console.log("Did NOT get that data tho.");
         return {
             ...state,
             error: action.payload
@@ -38,7 +38,7 @@ export const reducer = (state = initialState, action) => {
 
         //POST REQUESTS
         case POST_SMURFS_START: 
-        console.log("Posting data!", action.payload)
+        // console.log("Posting data!", action.payload)
         return {
             ...state,
             isFetching: false,
@@ -47,7 +47,7 @@ export const reducer = (state = initialState, action) => {
         };
     
         case POST_SMURFS_SUCCESS:
-            console.log("POsted that data tho.", action.payload);
+            // console.log("POsted that data tho.", action.payload);
             return {
                 ...state,
                 smurfs: [
@@ -60,12 +60,37 @@ export const reducer = (state = initialState, action) => {
             };
     
         case POST_SMURFS_FAILURE:
-            console.log("Did NOT post that data tho.");
-            console.log(action.payload);
+            // console.log("Did NOT post that data tho.");
+            // console.log(action.payload);
             return {
                 ...state,
                 error: action.payload
             };
+
+        case DELETE_SMURFS_START:
+            console.log('trying to delete', action.payload);
+            return {
+                ...state,
+                isFetching: false,
+                isPosting: false,
+                error: ''
+            }
+
+            case DELETE_SMURFS_SUCCESS:
+                    console.log('DID', action.payload);
+                    return {
+                        ...state,
+                        isFetching: false,
+                        isPosting: false,
+                        error: ''
+                    }
+
+        case DELETE_SMURFS_FAILURE:
+                console.log("Did NOT get that data tho.");
+                return {
+                    ...state,
+                    error: action.payload
+                };
 
         default: 
             return state; 

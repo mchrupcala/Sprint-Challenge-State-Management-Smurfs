@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import "./App.css";
 import {connect} from 'react-redux';
-import {getSmurfs, postSmurfs} from '../actions';
+import {getSmurfs, postSmurfs, deleteSmurfsAC} from '../actions';
 import SmurfList from './SmurfList';
 import SmurfForm from './SmurfForm';
 
@@ -20,10 +20,16 @@ const App = ({getSmurfs, postSmurfs, isFetching, isPosting, smurfs, error}) => {
     postSmurfs(props)
   }
 
+  const deleteSmurfs = props => {
+    console.log("Deleting", props)
+    console.log(deleteSmurfsAC(props));
+    deleteSmurfsAC(props)
+  }
+
     return (
       <div className="App">
         <h1>SMURFS Roll-Call!</h1>
-        <div><SmurfList smurfs={smurfs}/></div>
+        <div><SmurfList smurfs={smurfs} deleteSmurfs={deleteSmurfs} /></div>
         <SmurfForm smurfs={smurfs} addSmurf={addSmurf}/>
       </div>
     );
@@ -41,4 +47,4 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-   { getSmurfs, postSmurfs})(App);
+   { getSmurfs, postSmurfs, deleteSmurfsAC})(App);

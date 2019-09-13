@@ -21,9 +21,9 @@ const SmurfForm = props => {
     }
 
     const handleSubmit = event => {
-        event.preventDefault();
+        // event.preventDefault();
         props.addSmurf({age, height, id: Date.now(), name})
-        console.log('Handle Submit', {name, age, height})
+        // console.log('Handle Submit', {name, age, height})
     }
 
     return (
