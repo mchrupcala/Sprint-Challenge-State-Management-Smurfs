@@ -26,3 +26,9 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+.one-smurf {
+  border: 1px solid black;
+  margin: 10px 0;
+}
