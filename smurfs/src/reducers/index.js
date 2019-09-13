@@ -17,7 +17,7 @@ export const reducer = (state = initialState, action) => {
         };
 
     case FETCH_SMURFS_SUCCESS:
-        console.log("Got that data tho.");
+        console.log("Got that data tho.", action.payload);
         return {
             ...state,
             smurfs: action.payload,
