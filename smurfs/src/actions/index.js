@@ -33,7 +33,7 @@ export const postSmurfs = item => dispatch => {
 export const deleteSmurfsAC = item => dispatch => {
     dispatch({type: DELETE_SMURFS_START});
     axios
-        .delete(`http://localhost:3333/smurfs/${item}`)
+        .delete(`http://localhost:3333/smurfs/:${item}`)
         .then(res => 
             dispatch({type: DELETE_SMURFS_SUCCESS, payload: item}))
         .catch(err => dispatch({type: DELETE_SMURFS_FAILURE, payload: err}))
